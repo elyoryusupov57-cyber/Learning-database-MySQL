@@ -1,0 +1,19 @@
+
+DROP DATABASE IF EXISTS BonusPoints;
+CREATE DATABASE BonusPoints;
+USE BonusPoints;
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(40) NOT NULL,
+    FamilyName VARCHAR(40) NOT NULL,
+    LoyaltyCard VARCHAR(30) NOT NULL UNIQUE
+);
+
+CREATE TABLE LoyaltyPoints (
+    PointID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT NOT NULL,
+    Transdate DATE NOT NULL,
+    VirtualMoney FLOAT NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
